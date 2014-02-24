@@ -2,14 +2,16 @@
 include( 'config.php' );
 
 /**
+ * HTML to PDF converter using PHP.
+ * 
  * This script is based on the WebKit Engine. It MUST be installed prior of using
  * it. Also remember, that PHP user needs rights to execute CLI script.
  * 
  * Requires to be called with POST or GET data
  * 
- * @author   Dainis Abols <dainis@lursoft.lv>
+ * @author   Dainis Abols <dainis@dainisabols.lv>
  * @since    19.02.2014
- * @version  2.0
+ * @version  2.1
  */
 class ConvertToPdf
 {
@@ -61,7 +63,6 @@ class ConvertToPdf
             $this->domain = $output;
             $this->original_url = $content;
         }
-        
     }
     
     /**
@@ -84,7 +85,6 @@ class ConvertToPdf
         } else {
             return 'Fail';
         }
-        
     }
 }
 
@@ -94,8 +94,7 @@ $ctp->getData( $ctp->p_content, $ctp->p_type );
 
 $result = $ctp->convertData();
 
-if ( $result != 'Fail' )
-{
+if ( $result != 'Fail' ) {
     header( "Content-type: application/pdf" );
     header( "Content-Length: " . strlen( $result ) );
     header( "Accept-Ranges: " . strlen( $result ) );
